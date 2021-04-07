@@ -1,6 +1,7 @@
 # CS3200_Project
 
 Name of Project: Video Game Database
+
 Team: Vincent Johnson
 
 Description:
