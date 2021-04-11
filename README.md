@@ -26,7 +26,7 @@ One domain object data model is the table called developers, which stores the di
 The columns in this table are:
 id - primary key (int)
 name - the name of the developer company (string)
-headquarters_city - the location of the headquarters of the company, format: City, State Abbreviation or if it is outside the U.S. City, Country or something similar (string)
+headquarters_location - the location of the headquarters of the company (string)
 founded - the date the company was founded (date)
 website - the url of the website of the developer (string)
 
