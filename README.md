@@ -16,13 +16,13 @@ The sample data was taken from Wikipedia.
 **User Data Model:**
 Stored in the table called players, where players are simply people that play some video games that want to use the database.
 The columns in this table are:
-id - primary key (int)
-first_name - the first name of the user (string)
-last_name - the last name of the user (string)
-username - the username of the user (string)
-password - the password of the user (string)
-email - the email of the user (string)
-date_of_birth - the date of birth of the user (date)
+id - primary key (int)\
+first_name - the first name of the user (string)\
+last_name - the last name of the user (string)\
+username - the username of the user (string)\
+password - the password of the user (string)\
+email - the email of the user (string)\
+date_of_birth - the date of birth of the user (date)\
 
 **Domain Object Data Models:**
 One domain object data model is the table called developers, which stores the different developers of the video games.
