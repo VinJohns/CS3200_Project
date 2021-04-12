@@ -10,6 +10,9 @@ the platforms they appear on, and the company that developed the game. The users
 database to get information on games they play or follow, similar to something like Steam. 
 The sample data was taken from Wikipedia.
 
+/UML_Diagram.pdf
+
+
 **User Data Model:**
 Stored in the table called players, where players are simply people that play some video games that want to use the database.
 The columns in this table are:
