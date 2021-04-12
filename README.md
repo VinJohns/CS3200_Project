@@ -15,36 +15,36 @@ The sample data was taken from Wikipedia.
 
 **User Data Model:**
 Stored in the table called players, where players are simply people that play some video games that want to use the database.
-The columns in this table are:
+The columns in this table are:\
 id - primary key (int)\
 first_name - the first name of the user (string)\
 last_name - the last name of the user (string)\
 username - the username of the user (string)\
 password - the password of the user (string)\
 email - the email of the user (string)\
-date_of_birth - the date of birth of the user (date)\
+date_of_birth - the date of birth of the user (date)
 
 **Domain Object Data Models:**
 One domain object data model is the table called developers, which stores the different developers of the video games.
-The columns in this table are:
-id - primary key (int)
-name - the name of the developer company (string)
-headquarters_location - the location of the headquarters of the company (string)
-founded - the date the company was founded (date)
+The columns in this table are:\
+id - primary key (int)\
+name - the name of the developer company (string)\
+headquarters_location - the location of the headquarters of the company (string)\
+founded - the date the company was founded (date)\
 website - the url of the website of the developer (string)
 
 Another domain object data model is the table called video_games, which stores the different video games.
-The columns in this table are:
-id - primary key (int)
-name - the name of the video game (string)
-description - a short description of the game (string)
-release_date - the date the game was first released on any platform (date)
-genre - the genre the game fits into, or at least the one that fits best (genre enumeration)
+The columns in this table are:\
+id - primary key (int)\
+name - the name of the video game (string)\
+description - a short description of the game (string)\
+release_date - the date the game was first released on any platform (date)\
+genre - the genre the game fits into, or at least the one that fits best (genre enumeration)\
 developer - the foreign key referencing developers table (int)
 
 The last domain object model is the table called platforms, which stores the different platforms to play games on.
-The columns in this table are:
-id - primary key (int)
+The columns in this table are:\
+id - primary key (int)\
 name - the name of the platform (string)
 
 **User to Domain object relationship:**
