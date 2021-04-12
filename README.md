@@ -31,6 +31,7 @@ id - primary key (int)\
 name - the name of the developer company (string)\
 headquarters_location - the location of the headquarters of the company (string)\
 founded - the date the company was founded (date)\
+number_of_employees - the number of employees in the company (int)\
 website - the url of the website of the developer (string)
 
 Another domain object data model is the table called video_games, which stores the different video games.
@@ -39,6 +40,7 @@ id - primary key (int)\
 name - the name of the video game (string)\
 description - a short description of the game (string)\
 release_date - the date the game was first released on any platform (date)\
+price - the price of the game (float)\
 genre - the genre the game fits into, or at least the one that fits best (genre enumeration)\
 developer - the foreign key referencing developers table (int)
 
