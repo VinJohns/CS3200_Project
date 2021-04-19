@@ -1,0 +1,26 @@
+{% extends "./base_editor.html" %}
+
+{% block title %} Platform Editor {% endblock %}
+
+{% block header %} Platform Editor {% endblock %}
+
+{% block form %}
+
+{% if platform is None %}
+<form action="{% url 'project:new_platform' %}" method="post">
+{% else %}
+<form action="{% url 'project:platform' platform.id %}" method="post">
+{% endif %}
+
+	{% csrf_token %}
+	{{ form.as_p }}
+	
+	<a class="btn btn-warning" href="{% url 'project:platforms' %}"> Back to Platforms </a>
+	<a class="btn btn-primary" href="{% url 'project:new_platform' %}"> Go to Create Page </a>
+	<input type="submit" class="btn btn-danger" value="Delete" name="delete"></input>
+	<input type="reset" class="btn btn-secondary" value="Reset"></input>
+	<input type="submit" class="btn btn-success" value="Save" name="save"></input>
+	
+</form>
+
+{% endblock %}

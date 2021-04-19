@@ -1,0 +1,19 @@
+{% extends "./base_list.html" %}
+
+{% block title %} Developers {% endblock %}
+
+{% block header %} Developers {% endblock %}
+
+{% block button %} <a class="btn btn-primary" href="{% url 'project:new_developer' %}"> Add Developer </a> {% endblock %}
+
+{% block columns %} Name, Headquarters Location, Date Founded, Number of Employees, Website {% endblock %}
+
+{% block rows %} 
+{% for dev in developers %}
+	<li class="list-group-item"> <a href="{% url 'project:developer' dev.id %}">{{ dev.name }}, 
+	{{ dev.headquarters_location }}, {{ dev.founded }}, {{ dev.number_of_employees }}, {{ dev.website }} </a>
+	</li>		
+{% endfor %}
+{% endblock %}
+
+

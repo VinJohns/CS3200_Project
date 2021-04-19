@@ -1,0 +1,19 @@
+{% extends "./base_list.html" %}
+
+{% block title %} Players {% endblock %}
+
+{% block header %} Players {% endblock %}
+
+{% block button %} <a class="btn btn-primary" href="{% url 'project:new_player' %}"> Add Player </a> {% endblock %}
+
+{% block columns %} First Name, Last Name, Username, Password, Email, Date of Birth {% endblock %}
+
+{% block rows %} 
+{% for player in players %}
+	<li class="list-group-item"> <a href="{% url 'project:player' player.id %}">{{ player.first_name }}, 
+	{{ player.last_name }}, {{ player.username }}, {{ player.password }}, {{ player.email }}, {{ player.date_of_birth }} </a>
+	</li>
+{% endfor %}
+{% endblock %}
+
+

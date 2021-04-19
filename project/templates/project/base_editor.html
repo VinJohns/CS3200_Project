@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} Title {% endblock %}</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'project/css/bootstrap.min.css' %}" type = "text/css"/>
+  </head>
+  <body>
+	<div>
+		<h2>{% block header %} Header {% endblock %}</h2>
+
+		{% block form %} 
+
+		<form action="{% url 'project:class' object.id %}" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Submit">
+		</form>
+		
+		{% endblock %}
+		
+	</div>
+  </body>
+</html>
+
+
+

@@ -1,0 +1,26 @@
+{% extends "./base_editor.html" %}
+
+{% block title %} Player Editor {% endblock %}
+
+{% block header %} Player Editor {% endblock %}
+
+{% block form %}
+
+{% if player is None %}
+<form action="{% url 'project:new_player' %}" method="post">
+{% else %}
+<form action="{% url 'project:player' player.id %}" method="post">
+{% endif %}
+
+	{% csrf_token %}
+	{{ form.as_p }}
+	
+	<a class="btn btn-warning" href="{% url 'project:players' %}"> Back to Players </a>
+	<a class="btn btn-primary" href="{% url 'project:new_player' %}"> Go to Create Page </a>
+	<input type="submit" class="btn btn-danger" value="Delete" name="delete"></input>
+	<input type="reset" class="btn btn-secondary" value="Reset"></input>
+	<input type="submit" class="btn btn-success" value="Save" name="save"></input>
+	
+</form>
+
+{% endblock %}

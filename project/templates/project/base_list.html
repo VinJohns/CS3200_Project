@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} Title {% endblock %}</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'project/css/bootstrap.min.css' %}" type = "text/css"/>
+  </head>
+  <body>
+	<div>
+		<h2>{% block header %} Header {% endblock %}</h2>
+		
+		{% block button %} Add Something {% endblock %}
+		<a class="btn btn-warning" href="{% url 'project:index' %}"> Go to Homepage </a>
+
+		<ul class="list-group"> 
+			<li class="list-group"> {% block columns %} Column Names {% endblock %} </li>
+		
+			{% block rows %}
+			{% for item in items %}
+				<li class="list-group-item"> <a href="{% url 'project:class' item.id %}">{{ item.name }}</a>
+				</li>
+				
+			{% endfor %}
+			{% endblock %}
+			
+		<ul>
+	</div>
+  </body>
+</html>
+
+
+

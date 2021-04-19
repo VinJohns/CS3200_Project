@@ -1,0 +1,18 @@
+{% extends "./base_list.html" %}
+
+{% block title %} Platforms {% endblock %}
+
+{% block header %} Platforms {% endblock %}
+
+{% block button %} <a class="btn btn-primary" href="{% url 'project:new_platform' %}"> Add Platform </a> {% endblock %}
+
+{% block columns %} Name {% endblock %}
+
+{% block rows %} 
+{% for pltfm in platforms %}
+	<li class="list-group-item"> <a href="{% url 'project:platform' pltfm.id %}">{{ pltfm.name }} </a>
+	</li>
+{% endfor %}
+{% endblock %}
+
+
