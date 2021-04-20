@@ -42,11 +42,11 @@ CREATE TABLE project.video_games (
   `description` VARCHAR(200) NULL,
   `release_date` DATE NULL,
   `price` FLOAT NULL,
-  `genre_id` VARCHAR(20) DEFAULT NULL,
+  `genre` VARCHAR(20) DEFAULT NULL,
   `developer_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `developers_to_games_idx` (`developer_id` ASC),
-  FOREIGN KEY (`genre_id`) REFERENCES project.genres (`name`),
+  FOREIGN KEY (`genre`) REFERENCES project.genres (`name`),
   CONSTRAINT `games_to_developers`
    FOREIGN KEY (`developer_id`)
    REFERENCES project.developers (`id`)
