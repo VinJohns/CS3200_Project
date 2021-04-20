@@ -2,6 +2,11 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404, redirec
 from . import forms
 from . import models
 
+
+# Example of get_list_or_404, first argument is model, second argument is condition
+# my_objects = get_list_or_404(MyModel, published=True)
+
+
 # Create your views here.
 # The base url, might add some kind of intro
 def index(request):
