@@ -42,7 +42,7 @@ description - a short description of the game (string)\
 release_date - the date the game was first released on any platform (date)\
 price - the price of the game (float)\
 genre - the genre the game fits into, or at least the one that fits best (genre enumeration)\
-developer - the foreign key referencing developers table (int)
+developer_id - the foreign key referencing developers table (int)
 
 The last domain object model is the table called platforms, which stores the different platforms to play games on.
 The columns in this table are:\
@@ -63,6 +63,11 @@ Because of the many to many relationship, there is an extra table called connect
 The enumeration used in this database was the genre of the video game, which was split into six different genres:
 action, adventure, roleplaying, simulation, strategy, and sports. This list was based off of Wikipedias list of video game genres.
 
-**User Interface Requirements:**
+**User Interface:**
+I used Django and Python for my user interface and it was my first time using it, so there might be extra files because I didn't want to get rid of something I shouldn't have on accident.\
+To start the http API, run the command "python manage.py runserver", this defaults to localhost 8000 and can be changed, e.g. "python manage.py runserver 8080".\
+To read the records in a table, you can use the buttons or type the url, e.g. to go to homepage: http://localhost:8000/project/, to go to all records of a table [developers, videogames, platforms, players]: http://localhost:8000/project/developers/, to go to a single record of a table: http://localhost:8000/project/developers/1/ \
+The page that displays a single record allows you to create, update, or delete a record. Alternatively, you can use the URL to create, update, or delete.
+
 
 
