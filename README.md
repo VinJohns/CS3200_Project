@@ -49,13 +49,12 @@ name - the name of the platform (string)
 
 **User to Domain object relationship:**
 The table video_games is related to the players table in a many to many relationship, many people can play one game, and one person can play many games.
-Because of the many to many relationship, there is an extra table called libraries that connects the primary keys of players and video_games.
+Because of the many to many relationship, there is an extra table called libraries that connects the primary keys of players and video_games. If a player is deleted, the related records in the libraries table will also be deleted. Similarly, if a video game is deleted, the related records in the libraries table will be deleted.
 
 **Domain object to domain object relationships:**
-The developers table is related to the video_games table through a one to many relationship, a game has one developer, but a developer can have many games.
-There might be games with multiple developers, but it isn't considered as part of this database, just the main developer would be used.
+The developers table is related to the video_games table through a one to many relationship, a game has one developer, but a developer can have many games. If a developer is deleted, the related video games shouldn't be deleted. There might be games with multiple developers, but it isn't considered as part of this database, just the main developer would be used.
 The platforms table is related to the video_games table in a many to many relationship, one game can have many platforms and one platform can have have many games.
-Because of the many to many relationship, there is an extra table called connections that connects the primary keys of players and video_games.
+Because of the many to many relationship, there is an extra table called connections that connects the primary keys of players and video_games. If a platform is deleted, the related records in the connections table will also be deleted. Similarly, if a video game is deleted, the related records in the connections table will be deleted.
 
 **Enumeration:**
 The enumeration used in this database was the genre of the video game, which was split into six different genres:
