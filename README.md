@@ -66,7 +66,7 @@ To start the http API, run the command "python manage.py runserver", this defaul
 To read the records in a table, you can use the buttons or type the url, e.g. to go to homepage: http://localhost:8000/project/, to go to all records of a table [developers, videogames, platforms, players]: http://localhost:8000/project/developers/, to go to a single record of a table: http://localhost:8000/project/developers/1/ \
 The page that displays a single record allows you to create, update, or delete a record. The buttons on the editor page include one to go back to all records of current table, go to the create record page, delete a record, reset the input fields to what was initially there (only what was there before refreshing page), and saving a record, which will create a new record if on the create page, otherwise will update a record.
 
-Alternatively, you can use the URL to create, update, or delete.
+
 
 
 
