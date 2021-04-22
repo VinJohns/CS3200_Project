@@ -15,7 +15,10 @@
 	{% csrf_token %}
 	{{ form.as_p }}
 	
-	<a class="btn btn-warning" href="{% url 'project:developers' %}"> Back to Developers </a>
+	<a class="btn btn-warning" href="{% url 'project:developers' %}"> Back to All Developers </a>
+	{% if developer is not None %}
+	<a class="btn btn-info" href="{% url 'project:some_games' 'developer' developer.id%}"> Go to Related Video Games </a>
+	{% endif %}
 	<a class="btn btn-primary" href="{% url 'project:new_developer' %}"> Go to Create Page </a>
 	<input type="submit" class="btn btn-danger" value="Delete" name="delete"></input>
 	<input type="reset" class="btn btn-secondary" value="Reset"></input>

@@ -6,12 +6,12 @@
 
 {% block button %} <a class="btn btn-primary" href="{% url 'project:new_player' %}"> Add Player </a> {% endblock %}
 
-{% block columns %} First Name, Last Name, Username, Password, Email, Date of Birth {% endblock %}
+{% block columns %} First Name, Last Name, Username, Password, Email, Date of Birth, Video Games Player is Interested in {% endblock %}
 
 {% block rows %} 
 {% for player in players %}
-	<li class="list-group-item"> <a href="{% url 'project:player' player.id %}">{{ player.first_name }}, 
-	{{ player.last_name }}, {{ player.username }}, {{ player.password }}, {{ player.email }}, {{ player.date_of_birth }} </a>
+	<li class="list-group-item"> <a href="{% url 'project:player' player.id %}">{{ player.first_name }}, {{ player.last_name }},
+	{{ player.username }}, {{ player.password }}, {{ player.email }}, {{ player.date_of_birth }}, {{ player.get_games }} </a>
 	</li>
 {% endfor %}
 {% endblock %}

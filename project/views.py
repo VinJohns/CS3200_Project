@@ -3,21 +3,17 @@ from . import forms
 from . import models
 
 
-# Example of get_list_or_404, first argument is model, second argument is condition
-# my_objects = get_list_or_404(MyModel, published=True)
-
-
-# Create your views here.
 # The base url, might add some kind of intro
 def index(request):
     return render(request, 'project/index.html')
 
+
 # The developers page
 def developers(request):
 
-    all_devs = models.Developers.objects.all()
+    devs = models.Developer.objects.all()
         
-    return render(request, 'project/developers.html', {'developers': all_devs})
+    return render(request, 'project/developers.html', {'developers': devs})
 
 # The developer editor page
 def developer(request, developer_id=None):
@@ -27,7 +23,7 @@ def developer(request, developer_id=None):
         dev = None
     else:
         try:
-            dev = get_object_or_404(models.Developers, pk=developer_id)
+            dev = get_object_or_404(models.Developer, pk=developer_id)
         except:
             return redirect('project:new_developer')
     
@@ -51,18 +47,23 @@ def developer(request, developer_id=None):
                 new_dev = form.save()
                 return redirect('project:developer', developer_id=new_dev.id)
             
-    else:
+    else: # GET request will show current values
         form = DeveloperForm(instance=dev)
         
     return render(request, 'project/developer.html', {'form': form, 'developer': dev})
 
 
 # The platforms page
-def platforms(request):
+def platforms(request, id=None):
 
-    all_platforms = models.Platforms.objects.all()
+    # Display all records in table if not given optional arguments
+    if id is None:
+        platforms = models.Platform.objects.all()
+    else: # Display only related records
+        platforms = get_list_or_404(models.Platform, video_game__id=id)
+    
         
-    return render(request, 'project/platforms.html', {'platforms': all_platforms})
+    return render(request, 'project/platforms.html', {'platforms': platforms})
 
 # The platform editor page
 def platform(request, platform_id=None):
@@ -72,7 +73,7 @@ def platform(request, platform_id=None):
         pltfm = None
     else:
         try:
-            pltfm = get_object_or_404(models.Platforms, pk=platform_id)
+            pltfm = get_object_or_404(models.Platform, pk=platform_id)
         except:
             return redirect('project:new_platform')
     
@@ -96,18 +97,27 @@ def platform(request, platform_id=None):
                 new_pltfm = form.save()
                 return redirect('project:platform', platform_id=new_pltfm.id)
             
-    else:
+    else: # GET request will show current values
         form = PlatformForm(instance=pltfm)
         
     return render(request, 'project/platform.html', {'form': form, 'platform': pltfm})
 
 
 # The video games page
-def video_games(request):
-
-    all_games = models.Video_Games.objects.all()
+def video_games(request, related_table=None, id=None):
+    
+    # Display all records in table if not given optional arguments
+    if related_table is None and id is None:
+        games = models.Video_Game.objects.all()
+    else: # Display only related records
+        if related_table == 'developer':
+            games = get_list_or_404(models.Video_Game, developer_id=id)
+        elif related_table == 'platform':
+            games = get_list_or_404(models.Video_Game, platforms__id=id)
+        elif related_table == 'player':
+            games = get_list_or_404(models.Video_Game, player__id=id)
         
-    return render(request, 'project/video_games.html', {'games': all_games})
+    return render(request, 'project/video_games.html', {'games': games})
 
 # The video game editor page
 def video_game(request, game_id=None):
@@ -117,7 +127,7 @@ def video_game(request, game_id=None):
         game = None
     else:
         try:
-            game = get_object_or_404(models.Video_Games, pk=game_id)
+            game = get_object_or_404(models.Video_Game, pk=game_id)
         except:
             return redirect('project:new_game')
     
@@ -141,20 +151,23 @@ def video_game(request, game_id=None):
                 new_game = form.save()
                 return redirect('project:game', game_id=new_game.id)
             
-    else:
+    else: # GET request will show current values
         form = VideoGameForm(instance=game)
-        print(game.platforms)
         
     return render(request, 'project/video_game.html', {'form': form, 'game': game})
 
 
-
 # The players page
-def players(request):
+def players(request, id=None):
 
-    all_players = models.Players.objects.all()
+    # Display all records in table if not given optional arguments
+    if id is None:
+        players = models.Player.objects.all()
+    else: # Display only related records
+        players = get_list_or_404(models.Player, video_games__id=id)
+
         
-    return render(request, 'project/players.html', {'players': all_players})
+    return render(request, 'project/players.html', {'players': players})
 
 # The player editor page
 def player(request, player_id=None):
@@ -164,7 +177,7 @@ def player(request, player_id=None):
         player = None
     else:
         try:
-            player = get_object_or_404(models.Players, pk=player_id)
+            player = get_object_or_404(models.Player, pk=player_id)
         except:
             return redirect('project:new_player')
     
@@ -188,7 +201,8 @@ def player(request, player_id=None):
                 new_player = form.save()
                 return redirect('project:player', player_id=new_player.id)
             
-    else:
+    else: # GET request will show current values
         form = PlayerForm(instance=player)
         
     return render(request, 'project/player.html', {'form': form, 'player': player})
+

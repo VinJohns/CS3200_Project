@@ -6,12 +6,12 @@
 
 {% block button %} <a class="btn btn-primary" href="{% url 'project:new_game' %}"> Add Video Game </a> {% endblock %}
 
-{% block columns %} Name, Description, Release Date, Price, Genre, Developer ID {% endblock %}
+{% block columns %} Name, Description, Release Date, Price, Genre, Developer ID, Platforms the Game is on {% endblock %}
 
 {% block rows %} 
 {% for game in games %}
 	<li class="list-group-item"> <a href="{% url 'project:game' game.id %}">{{ game.name }}, {{ game.description }},
-	{{ game.release_date }}, {{ game.price }}, {{ game.genre }}, {{ game.developer_id }}, {{ game.platforms }} </a>
+	{{ game.release_date }}, {{ game.price }}, {{ game.genre }}, {{ game.developer_id }}, {{ game.get_platforms }} </a>
 	</li>
 {% endfor %}
 {% endblock %}

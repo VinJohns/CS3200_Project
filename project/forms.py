@@ -1,8 +1,8 @@
-from django.forms import ModelForm
+import django.forms as forms
 from . import models
 
 # Form to get values for columns in Developers Table
-class DeveloperForm(ModelForm):
+class DeveloperForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DeveloperForm, self).__init__(*args, **kwargs)
         
@@ -11,13 +11,12 @@ class DeveloperForm(ModelForm):
                 'class': 'form-control', 'required': False})
 
     class Meta:
-        model = models.Developers
+        model = models.Developer
         fields = '__all__'
         
-    use_required_attribute = False
     
 # Form to get values for columns in Platforms Table
-class PlatformForm(ModelForm):
+class PlatformForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PlatformForm, self).__init__(*args, **kwargs)
         
@@ -26,13 +25,12 @@ class PlatformForm(ModelForm):
                 'class': 'form-control', 'required': False})
 
     class Meta:
-        model = models.Platforms
+        model = models.Platform
         fields = '__all__'
         
-    use_required_attribute = False
     
 # Form to get values for columns in Video_Games Table
-class VideoGameForm(ModelForm):
+class VideoGameForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(VideoGameForm, self).__init__(*args, **kwargs)
         
@@ -41,14 +39,17 @@ class VideoGameForm(ModelForm):
                 'class': 'form-control', 'required': False})
 
     class Meta:
-        model = models.Video_Games
+        model = models.Video_Game
         fields = '__all__'
         
-    use_required_attribute = False
-    
-    
+    platforms = forms.ModelMultipleChoiceField(
+            queryset=models.Platform.objects.all(),
+            required=False
+            )
+        
+
 # Form to get values for columns in Players Table
-class PlayerForm(ModelForm):
+class PlayerForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PlayerForm, self).__init__(*args, **kwargs)
         
@@ -57,11 +58,12 @@ class PlayerForm(ModelForm):
                 'class': 'form-control', 'required': False})
 
     class Meta:
-        model = models.Players
+        model = models.Player
         fields = '__all__'
         
-    use_required_attribute = False
-    
-    
-    
+    video_games = forms.ModelMultipleChoiceField(
+        queryset=models.Video_Game.objects.all(),
+        required=False
+        )
+        
     

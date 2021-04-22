@@ -14,7 +14,7 @@ class GeneralDao(model):
     def find_all_objects(model):
         return model.objects.all()
     
-    # Find a single record in a Table from the id
+    # Find a single record in a Table from the id using objects.get method
     def find_object(model, given_id):
         return model.objects.get(pk=given_id)
         
