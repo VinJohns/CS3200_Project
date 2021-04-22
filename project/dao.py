@@ -4,6 +4,7 @@
 class GeneralDao(model):
     ''' model is a class from models.py, which represents one of the Tables in the database
         but I don't really use this because Django has forms
+        These functions assume the given model is already set up for CRUDing
 
     '''
     # Create an object using Django's save method
