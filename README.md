@@ -2,17 +2,21 @@
 
 **Name of Project:** Video Game Database
 
-**Team:** Vincent Johnson
+**Team:** Vincent Johnson Section 03
 
 **Description:**
-This project focuses on creating a database of different video games in MySQL. The video games are connected to the players, the platforms they appear on, and the company that developed the game. The users, or players, could access this database to get information on games they play or follow, similar to something like Steam. 
-The sample data was taken from Wikipedia. The tables of the database are stored in the [Database](db_design_final_project_database.zip) zip file and the MySQL code to create the tables is [Creating_Database.sql](Creating_Database.sql)
+Problem Statement\
+This project focuses on creating a database of different video games in MySQL. The users, or players, could access this database to get information on games they play or follow, similar to something like Steam. If someone is into video games, it is nice to have someplace to go to look up information about video games so they can find something new they think they will like.
+The sample data for this project was taken from Wikipedia. The tables of the database are stored in the [Database](database) folder and the MySQL code to create the tables is [Creating_Database.sql](Creating_Database.sql)
+
+Solution\
+My solution for this was to create a small database that contained some common information a person might look for when searching for a game they might like. The database has a developers table, a video games table, a platforms table, and a players table. The video games table is the common connection to the players table, the platforms table, and the developers table. The database is pretty easy to navigate through as well.
 
 [UML Diagram](db_design_final_project_UML.pdf)
 
 
 **User Data Model:**
-Stored in the table called players, where players are simply people that play some video games that want to use the database.
+Stored in the table called players, where players are simply people that play some video games that want to use the database. A player might want to keep track of the games they play as well as find out more information about the game. If the player can easily access information about a game they like, and find the developer, they might check out other games the developer made.
 The columns in this table are:\
 id - primary key (int)\
 first_name - the first name of the user (string)\
@@ -23,7 +27,7 @@ email - the email of the user (string)\
 date_of_birth - the date of birth of the user (date)
 
 **Domain Object Data Models:**
-One domain object data model is the table called developers, which stores the different developers of the video games.
+One domain object data model is the table called developers, which stores the different developers of the video games. Developers basically do all the behind the scenes work to make sure a game is playable and enjoyable for the users. Developers can publish their own games or get another company to publish it.
 The columns in this table are:\
 id - primary key (int)\
 name - the name of the developer company (string)\
@@ -32,7 +36,7 @@ founded - the date the company was founded (date)\
 number_of_employees - the number of employees in the company (int)\
 website - the url of the website of the developer (string)
 
-Another domain object data model is the table called video_games, which stores the different video games.
+Another domain object data model is the table called video_games, which stores the different video games. Video games are a form of entertainment and there are many different types of video games that can appeal to a wide variety of people. 
 The columns in this table are:\
 id - primary key (int)\
 name - the name of the video game (string)\
@@ -42,7 +46,7 @@ price - the price of the game (float)\
 genre - the genre the game fits into, or at least the one that fits best (genre enumeration)\
 developer_id - the foreign key referencing developers table (int)
 
-The last domain object model is the table called platforms, which stores the different platforms to play games on.
+The last domain object model is the table called platforms, which stores the different platforms to play games on. There are different platforms people can play on and people have a preference based on their past experience and on what they have.
 The columns in this table are:\
 id - primary key (int)\
 name - the name of the platform (string)
