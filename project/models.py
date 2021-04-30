@@ -20,7 +20,10 @@ class Developer(models.Model):
         db_table = 'developers'
         
     def __str__(self):
-        return self.name
+        if self.name is None:
+            return ''
+        else:
+            return self.name
     
 
 # Platforms Table
@@ -31,7 +34,10 @@ class Platform(models.Model):
         db_table = 'platforms'
         
     def __str__(self):
-        return self.name
+        if self.name is None:
+            return ''
+        else:
+            return self.name
     
     
 # Genres Table for Enumeration
@@ -42,7 +48,10 @@ class Genre(models.Model):
         db_table = 'genres'
         
     def __str__(self):
-        return self.name.capitalize()
+        if self.name is None:
+            return ''
+        else:
+            return self.name.capitalize()
         
 
 # Video_Games Table
@@ -59,7 +68,10 @@ class Video_Game(models.Model):
         db_table = 'video_games'
         
     def __str__(self):
-        return self.name
+        if self.name is None:
+            return ''
+        else:
+            return self.name
     
     
     def get_platforms(self):
@@ -80,7 +92,10 @@ class Player(models.Model):
         db_table = 'players'
         
     def __str__(self):
-        return self.username
+        if self.username is None:
+            return ''
+        else:
+            return self.username
     
     def get_games(self):
         return [game.name for game in self.video_games.all()]
